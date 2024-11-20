@@ -1,4 +1,5 @@
 from connection import ConnectionDB
+from tabulate import tabulate
 
 
 class Student:
@@ -29,6 +30,41 @@ class Student:
         except Exception as e:
             print("ERROR", e)
 
+    @staticmethod
+    def insert_data():
+        try:
+            ConnectionDB.execute_query("""INSERT INTO students (first_name, last_name, code_meli, age, gender) VALUES
+            ('John', 'Doe', 123456789, 20, 'Male'),
+            ('Jane', 'Smith', 987654321, 22, 'Female'),
+            ('Ali', 'Rezaei', 456123789, 21, 'Male'),
+            ('Sara', 'Moradi', 789321654, 23, 'Female');""")
+            ConnectionDB.close_db()
+            print("Data inserted successfully")
+        except Exception as e:
+            print("ERROR", e)
+
+    @staticmethod
+    def __show_data_table():
+        try:
+            return ConnectionDB.execute_query("""SELECT * FROM students;""").fetchall()
+        except Exception as e:
+            print("ERROR", e)
+
+    @staticmethod
+    def delete_table():
+        try:
+            ConnectionDB.execute_query("""DROP TABLE students;""")
+            ConnectionDB.close_db()
+            print("Table deleted successfully")
+        except Exception as e:
+            print("ERROR", e)
+
+    @classmethod
+    def display(cls):
+        items = cls.__show_data_table()
+        headers = ["student_id", "first_name", "last_name", "code_meli", "age", "gender"]
+        print(tabulate(items, headers=headers, tablefmt="grid"))
+
 
 class Course:
 
@@ -56,6 +92,42 @@ class Course:
             print("Table altered successfully")
         except Exception as e:
             print("ERROR", e)
+
+    @staticmethod
+    def insert_data():
+        try:
+            ConnectionDB.execute_query("""INSERT INTO courses (course_name, course_hours, student_id) VALUES
+            ('Mathematics', '01:30:00', 1),
+            ('Physics', '02:00:00', 2),
+            ('Computer Science', '03:00:00', 3),
+            ('Chemistry', '02:30:00', 4);""")
+            ConnectionDB.close_db()
+            print("Data inserted successfully")
+        except Exception as e:
+            print("ERROR", e)
+
+    @staticmethod
+    def __show_data_table():
+        try:
+            ConnectionDB.execute_query("""SELECT * FROM courses;""").fetchall()
+            return ConnectionDB.close_db()
+        except Exception as e:
+            print("ERROR", e)
+
+    @staticmethod
+    def delete_table():
+        try:
+            ConnectionDB.execute_query("""DROP TABLE courses;""")
+            ConnectionDB.close_db()
+            print("Table deleted successfully")
+        except Exception as e:
+            print("ERROR", e)
+
+    @classmethod
+    def display(cls):
+        items = cls.__show_data_table()
+        headers = ["course_id", "course_name", "courses_hours", "student_id"]
+        print(tabulate(items, headers=headers, tablefmt="grid"))
 
 
 class Grades:
@@ -87,6 +159,43 @@ class Grades:
         except Exception as e:
             print("ERROR", e)
 
+    @staticmethod
+    def insert_data():
+        try:
+            ConnectionDB.execute_query("""INSERT INTO grades (student_id, course_id, grade_achieved) VALUES
+            (1, 1, 88.5),
+            (2, 2, 92.0),
+            (3, 3, 78.3),
+            (4, 4, 85.0);""")
+            ConnectionDB.close_db()
+            print("Data inserted successfully")
+        except Exception as e:
+            print("ERROR", e)
+
+    @staticmethod
+    def __show_data_table():
+        try:
+            ConnectionDB.execute_query("""SELECT * FROM grades;""").fetchall()
+            return ConnectionDB.close_db()
+
+        except Exception as e:
+            print("ERROR", e)
+
+    @classmethod
+    def display(cls):
+        items = cls.__show_data_table()
+        headers = ["grade_id", "student_id", "course_id", "grade_achieved"]
+        print(tabulate(items, headers=headers, tablefmt="grid"))
+
+    @staticmethod
+    def delete_table():
+        try:
+            ConnectionDB.execute_query("""DROP TABLE grades;""")
+            ConnectionDB.close_db()
+            print("Table deleted successfully")
+        except Exception as e:
+            print("ERROR", e)
+
 
 class Enrollment:
     @staticmethod
@@ -105,6 +214,19 @@ class Enrollment:
             print("ERROR", e)
 
     @staticmethod
+    def insert_data():
+        try:
+            ConnectionDB.execute_query("""INSERT INTO enrollments (student_id, address, date) VALUES
+            (1, '123 Elm Street, CityA', '2024-09-01'),
+            (2, '456 Oak Avenue, CityB', '2024-09-02'),
+            (3, '789 Pine Road, CityC', '2024-09-03'),
+            (4, '321 Maple Lane, CityD', '2024-09-04');""")
+            ConnectionDB.close_db()
+            print("Data inserted successfully")
+        except Exception as e:
+            print("ERROR", e)
+
+    @staticmethod
     def alter_table():
         try:
             ConnectionDB.execute_query("""ALTER TABLE
@@ -113,6 +235,29 @@ class Enrollment:
             "enrollments" ADD CONSTRAINT "enrollments_student_id_unique" UNIQUE("student_id");""")
             ConnectionDB.close_db()
             print("Table altered successfully")
+        except Exception as e:
+            print("ERROR", e)
+
+    @staticmethod
+    def __show_data_table():
+        try:
+            ConnectionDB.execute_query("""SELECT * FROM enrollments;""").fetchall()
+            return ConnectionDB.close_db()
+        except Exception as e:
+            print("ERROR", e)
+
+    @classmethod
+    def display(cls):
+        items = cls.__show_data_table()
+        headers = ["enrollments_id", "student_id", "address", "date"]
+        print(tabulate(items, headers=headers, tablefmt="grid"))
+
+    @staticmethod
+    def delete_table():
+        try:
+            ConnectionDB.execute_query("""DROP TABLE enrollments;""")
+            ConnectionDB.close_db()
+            print("Table deleted successfully")
         except Exception as e:
             print("ERROR", e)
 
@@ -131,7 +276,41 @@ class StCo:
         except Exception as e:
             print("ERROR", e)
 
+    @staticmethod
+    def insert_data():
+        try:
+            ConnectionDB.execute_query("""INSERT INTO "st-co" (student_id, course_id) VALUES
+            (1, 1),
+            (2, 2),
+            (3, 3),
+            (4, 4);""")
+            ConnectionDB.close_db()
+            print("Data inserted successfully")
+        except Exception as e:
+            print("ERROR", e)
 
+    @staticmethod
+    def __show_data_table():
+        try:
+            ConnectionDB.execute_query("""SELECT * FROM st-co;""").fetchall()
+            return ConnectionDB.close_db()
+        except Exception as e:
+            print("ERROR", e)
+
+    @classmethod
+    def display(cls):
+        items = cls.__show_data_table()
+        headers = ["student_id", "course_id"]
+        print(tabulate(items, headers=headers, tablefmt="grid"))
+
+    @staticmethod
+    def delete_table():
+        try:
+            ConnectionDB.execute_query("""DROP TABLE st-co;""")
+            ConnectionDB.close_db()
+            print("Table deleted successfully")
+        except Exception as e:
+            print("ERROR", e)
 
 
 """
@@ -142,5 +321,8 @@ ALTER TABLE
 ALTER TABLE
     "enrollments" ADD CONSTRAINT "enrollments_student_id_foreign" FOREIGN KEY("student_id") REFERENCES "students"("student_id");
 ALTER TABLE
-    "grades" ADD CONSTRAINT "grades_course_id_foreign" FOREIGN KEY("course_id") REFERENCES "courses"("course_id");"""
+    "grades" ADD CONSTRAINT "grades_course_id_foreign" FOREIGN KEY("course_id") REFERENCES "courses"("course_id");
+"""
 
+obj1 = Student()
+obj1.display()
