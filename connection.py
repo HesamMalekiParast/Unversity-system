@@ -20,12 +20,6 @@ class ConnectionDB:
         return cursor
 
     @staticmethod
-    def close_db_fetch():
-        cursor = ConnectionDB.connect_db()
-        cursor.fetchall()
-        return cursor
-
-    @staticmethod
     def close_db():
         cursor = ConnectionDB.connect_db()
         return cursor.close()
