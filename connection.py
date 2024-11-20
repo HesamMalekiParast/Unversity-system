@@ -1,5 +1,6 @@
 import psycopg2
 
+
 class ConnectionDB:
     @staticmethod
     def connect_db():
