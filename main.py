@@ -1,4 +1,5 @@
-from connection.connection import ConnectionDB
+from connection import ConnectionDB
+
 
 class Student:
     # def __init__(self, student_id, first_name, last_name, national_code, age, gender):
@@ -23,7 +24,7 @@ class Student:
             ConnectionDB.close_db()
             print("Table created successfully")
         except Exception as e:
-            print("ERROR",e)
+            print("ERROR", e)
 
     @staticmethod
     def alter_table():
@@ -34,6 +35,7 @@ class Student:
             print("Table altered successfully")
         except Exception as e:
             print("ERROR", e)
+
 
 class Course:
     # def __init__(self, course_id, course_name, course_description):
@@ -66,6 +68,7 @@ class Course:
         except Exception as e:
             print("ERROR", e)
 
+
 class Grades:
     # def __init__(self, grade_id, student_id, course_id, grade_achieved):
     #     self.id = grade_id
@@ -86,7 +89,7 @@ class Grades:
             ConnectionDB.close_db()
             print("Table created successfully")
         except Exception as e:
-            print("ERROR",e)
+            print("ERROR", e)
 
     @staticmethod
     def alter_table():
@@ -99,6 +102,8 @@ class Grades:
             print("Table altered successfully")
         except Exception as e:
             print("ERROR", e)
+
+
 class Enrollment:
     # def __init__(self, enrollment_id, student_id, address, date):
     #     self.id = enrollment_id
@@ -119,7 +124,7 @@ class Enrollment:
             ConnectionDB.close_db()
             print("Table created successfully")
         except Exception as e:
-            print("ERROR",e)
+            print("ERROR", e)
 
     @staticmethod
     def alter_table():
@@ -152,7 +157,10 @@ class StCo:
             ConnectionDB.close_db()
             print("Table created successfully")
         except Exception as e:
-            print("ERROR",e)
+            print("ERROR", e)
+
+
+
 
 """
 ALTER TABLE
@@ -163,3 +171,4 @@ ALTER TABLE
     "enrollments" ADD CONSTRAINT "enrollments_student_id_foreign" FOREIGN KEY("student_id") REFERENCES "students"("student_id");
 ALTER TABLE
     "grades" ADD CONSTRAINT "grades_course_id_foreign" FOREIGN KEY("course_id") REFERENCES "courses"("course_id");"""
+
