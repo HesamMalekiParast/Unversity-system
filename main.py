@@ -2,13 +2,6 @@ from connection import ConnectionDB
 
 
 class Student:
-    # def __init__(self, student_id, first_name, last_name, national_code, age, gender):
-    #     self.id = student_id
-    #     self.first_name = first_name
-    #     self.last_name = last_name
-    #     self.national_code = national_code
-    #     self.age = age
-    #     self.gender = gender
 
     @staticmethod
     def create_table():
@@ -38,10 +31,6 @@ class Student:
 
 
 class Course:
-    # def __init__(self, course_id, course_name, course_description):
-    #     self.id = course_id
-    #     self.course_name = course_name
-    #     self.course_description = course_description
 
     @staticmethod
     def create_table():
@@ -70,11 +59,6 @@ class Course:
 
 
 class Grades:
-    # def __init__(self, grade_id, student_id, course_id, grade_achieved):
-    #     self.id = grade_id
-    #     self.student_id = student_id
-    #     self.course_id = course_id
-    #     self.grade_achieved = grade_achieved
 
     @staticmethod
     def create_table():
@@ -105,12 +89,6 @@ class Grades:
 
 
 class Enrollment:
-    # def __init__(self, enrollment_id, student_id, address, date):
-    #     self.id = enrollment_id
-    #     self.student_id = student_id
-    #     self.address = address
-    #     self.date = date
-
     @staticmethod
     def create_table():
         try:
@@ -140,12 +118,6 @@ class Enrollment:
 
 
 class StCo:
-    # def __init__(self, enrollment_id, student_id, address, date):
-    #     self.id = enrollment_id
-    #     self.student_id = student_id
-    #     self.address = address
-    #     self.date = date
-
     @staticmethod
     def create_table():
         try:
